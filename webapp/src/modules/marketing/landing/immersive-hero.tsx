@@ -42,7 +42,7 @@ export function ImmersiveHero() {
 
       {/* Floating orbit cards */}
       <FloatingCard
-        className="left-[4%] top-[22%] hidden xl:block"
+        className="left-[2%] top-[28%] hidden 2xl:block"
         delay={0.2}
         rotate={-6}
       >
@@ -54,7 +54,7 @@ export function ImmersiveHero() {
       </FloatingCard>
 
       <FloatingCard
-        className="right-[5%] top-[20%] hidden xl:block"
+        className="right-[2%] top-[26%] hidden 2xl:block"
         delay={0.35}
         rotate={5}
       >
@@ -88,7 +88,7 @@ export function ImmersiveHero() {
         <p className="mt-1 text-3xl font-bold text-[#0F172A]">86</p>
       </FloatingCard>
 
-      <div className="relative mx-auto flex max-w-5xl flex-col items-center px-4 text-center sm:px-6">
+      <div className="relative z-20 mx-auto flex max-w-4xl flex-col items-center px-4 text-center sm:px-6">
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -111,11 +111,13 @@ export function ImmersiveHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.14, duration: 0.6 }}
-          className="font-display mt-7 max-w-[14ch] text-[2.75rem] font-bold leading-[1.05] tracking-[-0.035em] text-[#0F172A] sm:max-w-[18ch] sm:text-6xl lg:text-[4.75rem]"
+          className="font-display mt-7 text-[2.2rem] font-bold leading-[1.12] tracking-[-0.03em] text-[#0F172A] sm:text-5xl lg:text-[3.35rem]"
         >
-          Healthcare doesn&apos;t end at discharge.
-          <br />
-          <span className="hn-gradient-text">It continues with AI.</span>
+          <span className="block">Healthcare That Reaches</span>
+          <span className="block">Beyond Boundaries.</span>
+          <span className="hn-gradient-text mt-2 block">
+            Every Home, Every Village.
+          </span>
         </motion.h1>
 
         <motion.p
@@ -124,9 +126,9 @@ export function ImmersiveHero() {
           transition={{ delay: 0.24 }}
           className="mt-6 max-w-2xl text-base leading-relaxed text-[#64748B] sm:text-lg"
         >
-          From hospital ward to living room — one care graph connecting doctors,
-          patients, caregivers, and AI that assists without ever replacing clinical
-          judgement.
+          From hospitals to homes, cities to villages — one care graph connecting
+          doctors, patients, caregivers, and AI that assists without ever replacing
+          clinical judgement.
         </motion.p>
 
         <motion.div
@@ -243,7 +245,7 @@ function FloatingCard({
         opacity: { delay, duration: 0.5 },
         y: { delay: delay + 0.5, duration: 5, repeat: Infinity, ease: "easeInOut" },
       }}
-      className={`hn-card-premium absolute z-10 w-[170px] rounded-2xl p-3.5 ${className ?? ""}`}
+      className={`hn-card-premium pointer-events-none absolute z-[1] w-[170px] rounded-2xl p-3.5 ${className ?? ""}`}
     >
       {children}
     </motion.div>
