@@ -1,10 +1,12 @@
 <div align="center">
 
+<img src="webapp/public/logo.png" alt="HealNexus" width="88" />
+
 # HealNexus
 
-**Healthcare that stays with you — after discharge.**
+### Healthcare that reaches beyond boundaries.<br/>Every home, every village.
 
-AI-powered continuity of care for patients, families, doctors, and rural health workers.
+From hospitals to homes, cities to villages — one care graph for doctors, patients, caregivers, and rural health workers. **AI assists. Clinicians decide.**
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React_19-087EA4?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
@@ -12,7 +14,38 @@ AI-powered continuity of care for patients, families, doctors, and rural health 
 [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
-[Quick start](#quick-start) · [Demo logins](#five-minute-demo) · [Architecture](#system-architecture) · [Deploy](#deploy) · [Safety](#clinical-safety)
+[![EN · HI · GU](https://img.shields.io/badge/Languages-EN%20·%20HI%20·%20GU-0F766E?style=flat-square)](#features)
+[![Safety](https://img.shields.io/badge/AI-assists%2C%20never%20prescribes-2563EB?style=flat-square)](#clinical-safety)
+[![Demo](https://img.shields.io/badge/Demo-no%20API%20keys%20required-22C55E?style=flat-square)](#five-minute-demo)
+
+**[Quick start](#quick-start)** · **[5-minute demo](#five-minute-demo)** · **[Architecture](#system-architecture)** · **[Deploy](#deploy)**
+
+<br/>
+
+<img src="assets/screenshot-landing.png" alt="HealNexus landing — healthcare that reaches beyond boundaries" width="920" />
+
+<sub>Landing — the same continuity thread from Civil Hospital OPD to a Sanand village home visit.</sub>
+
+<br/>
+
+<table>
+<tr>
+<td width="50%" align="center">
+<img src="assets/screenshot-dashboard.png" alt="Doctor workspace — live risk-sorted Active Panel" />
+<br/>
+<sub><b>Doctor</b> · live risk, recovery, escalations</sub>
+</td>
+<td width="50%" align="center">
+<img src="assets/screenshot-patient.png" alt="Patient Today dashboard" />
+<br/>
+<sub><b>Patient</b> · Today’s care, same scores</sub>
+</td>
+</tr>
+</table>
+
+<img src="assets/screenshot-rural.png" alt="Rural Field Care for health workers" width="920" />
+
+<sub>Field Care — screening, visits, and offline sync. Language lives in the navbar only (EN / HI / GU).</sub>
 
 </div>
 
@@ -27,53 +60,19 @@ This repo is a **working MVP** — not a slide deck. Role portals, live recovery
 
 ---
 
-## Table of contents
+## Why HealNexus
 
-1. [Problem](#problem)
-2. [Solution](#solution)
-3. [Features](#features)
-4. [Pricing model](#pricing-model)
-5. [Tech stack](#technology-stack)
-6. [Architecture](#system-architecture)
-7. [APIs](#apis)
-8. [Database](#database)
-9. [Setup & run](#quick-start)
-10. [Deploy](#deploy)
-11. [Secrets](#secrets--credentials)
-12. [AI disclosure](#ai-tools-disclosure)
-13. [Originality](#originality)
+Hospitals lose the patient at the gate. After discharge, medicines are missed, vitals drift, labs go overdue, and rural families cannot always reach the same OPD. Doctors see **static labels**. ASHA / ANM workers work from paper.
 
----
-
-## Problem
-
-Hospitals lose the patient at the gate. After discharge, medicines are missed, vitals drift, labs go overdue, and rural families cannot always reach the same OPD. Doctors see **static labels**. Caregivers and ASHA / ANM workers work from paper.
-
-**India-shaped gaps this MVP targets** (Ahmedabad / Gujarat demo):
-
-| Gap | What breaks |
-| --- | --- |
-| Post-discharge follow-up | Diabetes, hypertension, COPD, surgery recovery |
-| Language | English, Hindi, Gujarati in the same product |
+| Gap | What this MVP closes (Ahmedabad / Gujarat demo) |
+| :---: | --- |
+| Follow-up | Diabetes, hypertension, COPD, surgery recovery on one thread |
+| Language | English, Hindi, Gujarati — same safety rails |
 | Rural path | Village PHC → CHC → district hospital |
-| Offline | Health identity when the network drops |
+| Offline | Health Card / passport when the network drops |
 | Trust | Assistive AI that **does not** impersonate a doctor |
 
----
-
-## Solution
-
-One continuity thread for **patient · family · doctor · health worker**.
-
-| Layer | Role in this MVP |
-| --- | --- |
-| **`webapp/`** | React 19 + Vite + TypeScript — five roles, marketing site, `/pricing` |
-| **Local store** | Browser `localStorage` seed (Ahmedabad + villages). **Enough to judge the prototype.** |
-| **Rule engines** | Recovery score, readmission risk, disease progression, alerts from live check-ins |
-| **`ai-service/`** | Optional FastAPI — Care Companion, visit brief, health assistant, medicine extract |
-| **`supabase/`** | Optional Postgres + RLS — **not required** to demo |
-
-When a check-in, missed dose, or overdue lab changes, **the doctor list and the patient Recovery page show the same numbers.**
+**One continuity graph:** patient · family · doctor · health worker. When a check-in, missed dose, or overdue lab changes, **the doctor list and the patient Recovery page show the same numbers.**
 
 ```mermaid
 flowchart LR
@@ -96,29 +95,37 @@ flowchart LR
   W -.-> A
 ```
 
+| Layer | What you are judging |
+| --- | --- |
+| **`webapp/`** | React 19 + Vite + TypeScript — five roles, marketing, `/pricing` |
+| **Local store** | Browser `localStorage` seed (Ahmedabad + villages) |
+| **Rule engines** | Recovery, readmission risk, progression, alerts from live check-ins |
+| **`ai-service/`** | Optional FastAPI — companion, visit brief, assistant, medicine extract |
+| **`supabase/`** | Optional Postgres + RLS — **not required** to demo |
+
 ---
 
 ## Features
 
 Sign in on `/login` with **live role buttons**, or User ID + `demo123`.
 
-| You can try | Where | Built by |
-| --- | --- | --- |
-| Live risk + recovery caseload | Doctor → Patients / Active Panel | Original rules + UI |
-| Today dashboard + Recovery | Patient → Today / Recovery | Original |
-| Check-in, medicines, care plan | Patient modules | Original |
-| Talk to HealNexus | Patient → companion | Original orchestration; optional Exa + OpenRouter |
-| AI Doctor Visit Brief | Doctor patient record | Original context; optional LLM |
-| Medicine camera scanner | Patient → Scan | Original UI; optional extract |
-| Nearest care (PHC, shop, lab) | Patient → Get help | Original catalogue + **Leaflet / OSM** |
-| Offline Health Card / Passport QR | Patient → Passport | Original |
-| Family / caregiver alerts | Priya · Caregiver | Original |
-| Village home visits | Kavita · Health Worker | Original seed |
-| EN / HI / GU | Language switcher | Original dictionaries |
-| Pricing (B2C + B2B + sponsored) | `/pricing` | Original marketing page |
+| Try this | Where |
+| --- | --- |
+| Live risk + recovery caseload | Doctor → Home / Active Panel |
+| Today dashboard + Recovery | Patient → Today / Recovery |
+| Check-in, medicines, care plan | Patient modules |
+| Talk to HealNexus | Patient companion · optional Exa + OpenRouter |
+| AI Doctor Visit Brief | Doctor patient record · optional LLM |
+| Medicine camera scanner | Patient → Scan · optional extract |
+| Nearest care (PHC, shop, lab) | Patient → Get help · Leaflet / OSM |
+| Offline Health Card / Passport QR | Patient → Passport |
+| Family alerts | Priya · Caregiver |
+| Village home visits & screening | Kavita · Health Worker |
+| EN / HI / GU | Navbar language switcher |
+| Pricing (B2C + B2B + sponsored) | `/pricing` |
 
 **No keys:** portals, scores, OSM maps, passport, check-ins, villages.  
-**With AI service:** grounded assistant and LLM drafts. Without keys, those calls fail closed — the rest still runs.
+**With AI service:** grounded assistant and LLM drafts. Without keys those calls fail closed — the rest still runs.
 
 ---
 
@@ -131,22 +138,13 @@ Presentation only (`webapp/src/modules/marketing/pricing-config.ts`) — **not b
 | Individual | **₹0** / **₹99**/mo | Free everyday care · Care = personal AI |
 | Family | **₹199**/mo | Up to 5 members |
 | Hospitals | **₹4,999+** / Custom | Proposed SaaS — labelled as proposed |
-| Communities | Sponsored | NGOs / CSR / public health *potential* deploy — no fake gov partnerships |
+| Communities | Sponsored | NGOs / CSR / public health *potential* — no fake gov partnerships |
 
 ---
 
 ## Technology stack
 
-### This team built
-
-- Role modules (patient, doctor, caregiver, health worker, admin, identity)
-- Local store + Ahmedabad / village seed
-- In-app health intelligence (`webapp/src/lib/health-engine`, `clinical-risk.ts`)
-- FastAPI Care Companion orchestration + safety copy
-- Custom EN / HI / GU dictionaries
-- Marketing + pricing UX
-
-### Third-party (not our trained models)
+**This team built:** role modules (patient, doctor, caregiver, health worker, admin, identity) · Ahmedabad / village seed · in-app health intelligence (`health-engine`, `clinical-risk.ts`) · FastAPI Care Companion orchestration + safety copy · custom EN / HI / GU dictionaries · marketing + pricing UX.
 
 | Piece | Terms | Use |
 | --- | --- | --- |
@@ -160,7 +158,7 @@ Presentation only (`webapp/src/modules/marketing/pricing-config.ts`) — **not b
 | **Exa** | Vendor ToS | Server-side medical **search** |
 | **OpenRouter** | Vendor + model ToS | Server-side LLM **synthesis** |
 
-Demo patients and village coordinates are **synthetic / curated**. Scores are **explainable rules**, not a production XGBoost we trained. We do **not** claim OSM, Exa, or OpenRouter as team-built models.
+Demo patients and village coordinates are **synthetic / curated**. Scores are **explainable rules**, not a production model we trained. We do **not** claim OSM, Exa, or OpenRouter as team-built models.
 
 ---
 
@@ -195,6 +193,7 @@ HealNexus/
 ├── webapp/                 # MVP UI, store, engines, /pricing
 ├── ai-service/             # Optional FastAPI
 ├── supabase/migrations/    # Optional SQL
+├── assets/                 # Product screenshots
 ├── docs/                   # SRS
 └── README.md
 ```
@@ -206,7 +205,7 @@ HealNexus/
 Interactive docs: [http://127.0.0.1:8001/docs](http://127.0.0.1:8001/docs) when the AI service is up.
 
 <details>
-<summary><strong>Endpoint list</strong> (click to expand)</summary>
+<summary><strong>Endpoint list</strong></summary>
 
 | Method | Path | Purpose |
 | --- | --- | --- |
@@ -230,7 +229,7 @@ Demo **CRUD is the local store**, not a public REST API. `VITE_AI_API_BASE_URL` 
 ## Database
 
 **Default (zero install):** `localStorage` key `healnexus-dynamic-store-v2` · seed in `webapp/src/data/store/seed.ts`.  
-`demo123` is a **public demo password**, not a production secret. Hard-refresh after a pull if seed version bumped.
+`demo123` is a **public demo password**, not a production secret. Hard-refresh after a pull if the seed version bumped.
 
 **Optional:** `supabase/migrations/` → project URL + **anon** key on the webapp. Service role never in GitHub / never in Vite.
 
@@ -276,7 +275,7 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8001
 ## Five-minute demo
 
 1. `cd webapp && npm install && npm run dev`
-2. **Dr. Ananya · Doctor** → Patients: live Recovery + risk, village rows
+2. **Dr. Ananya · Doctor** → Home: live Recovery + risk, village rows
 3. Sign out → **Asha · Patient** → Today / Recovery: **same scores**
 4. Get help → nearest PHC / pharmacy
 5. Optional: AI service → Talk to HealNexus
@@ -332,7 +331,7 @@ HealNexus is an original continuity-of-care product in this repository. Third-pa
 
 <div align="center">
 
-**Healthcare continuity for everyone** — free to start, affordable to upgrade, scalable for hospitals.
+**Healthcare that reaches beyond boundaries** — every home, every village.
 
 *AI assists. Clinicians decide.*
 

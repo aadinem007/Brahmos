@@ -115,14 +115,14 @@ export function PricingSection() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_15%_-10%,rgba(37,99,235,0.12),transparent_55%),radial-gradient(ellipse_50%_40%_at_90%_0%,rgba(20,184,166,0.10),transparent_50%)]" />
         <div className="relative mx-auto max-w-6xl px-4 text-center sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#14B8A6]">
-            Healthcare continuity should be accessible to everyone.
+            Every home, every village.
           </p>
           <h1 className="font-display mx-auto mt-3 max-w-3xl text-4xl font-bold tracking-tight text-[#0F172A] sm:text-5xl">
-            Healthcare that stays with you.
+            Healthcare that reaches beyond boundaries.
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base text-[#64748B] sm:text-lg">
-            Affordable continuity-of-care support for patients, families and
-            healthcare organizations.
+            Affordable continuity-of-care for patients, families, and
+            healthcare organizations — from the ward to the village.
           </p>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-[#64748B]">
             From daily care and medication reminders to AI-powered assistance
