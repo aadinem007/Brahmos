@@ -118,7 +118,7 @@ export function BentoFeatures() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid auto-rows-[minmax(180px,auto)] gap-4 md:grid-cols-3">
+        <div className="mt-12 grid auto-rows-[minmax(200px,auto)] gap-4 md:grid-cols-3">
           {FEATURES.map((f, i) => {
             const Icon = f.icon;
             const isHero = i === 0;
@@ -151,9 +151,7 @@ export function BentoFeatures() {
                       >
                         <Icon className="h-5 w-5" style={{ color: f.accent }} />
                       </motion.div>
-                      <span
-                        className="rounded-full bg-white/80 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#475569] shadow-sm ring-1 ring-[#0F172A]/05"
-                      >
+                      <span className="rounded-full bg-white/80 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#475569] shadow-sm ring-1 ring-[#0F172A]/05">
                         {f.tag}
                       </span>
                     </div>
@@ -165,30 +163,55 @@ export function BentoFeatures() {
                       {f.title}
                     </h3>
                     <p
-                      className={`mt-2 flex-1 leading-relaxed text-[#64748B] ${
+                      className={`mt-2 max-w-xl leading-relaxed text-[#64748B] ${
                         isHero ? "text-base" : "text-sm"
                       }`}
                     >
                       {f.body}
                     </p>
                     {isHero ? (
-                      <div className="mt-6 flex flex-wrap gap-2">
-                        {["Discharge → home", "Versioned plans", "Doctor approved"].map(
-                          (chip) => (
+                      <>
+                        <ul className="mt-6 grid gap-2 sm:grid-cols-3">
+                          {[
+                            { when: "Morning", what: "Medicines & vitals" },
+                            { when: "Afternoon", what: "Walk as advised" },
+                            { when: "Evening", what: "Daily check-in" },
+                          ].map((row) => (
+                            <li
+                              key={row.when}
+                              className="rounded-2xl border border-white/70 bg-white/80 px-3 py-3 text-left shadow-sm"
+                            >
+                              <p className="text-[11px] font-semibold uppercase tracking-wide text-[#2563EB]">
+                                {row.when}
+                              </p>
+                              <p className="mt-0.5 text-sm font-medium text-[#0F172A]">
+                                {row.what}
+                              </p>
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="mt-auto flex flex-wrap gap-2 pt-6">
+                          {[
+                            "Discharge → home",
+                            "Versioned plans",
+                            "Doctor approved",
+                          ].map((chip) => (
                             <span
                               key={chip}
                               className="rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-[#1E3A8A] shadow-sm ring-1 ring-[#2563EB]/15"
                             >
                               {chip}
                             </span>
-                          ),
-                        )}
-                      </div>
+                          ))}
+                        </div>
+                      </>
                     ) : (
-                      <div
-                        className="mt-4 h-1 w-10 rounded-full opacity-80 transition-all duration-500 group-hover:w-16"
-                        style={{ background: f.accent }}
-                      />
+                      <div className="mt-auto pt-5">
+                        <div
+                          className="h-1 w-10 rounded-full opacity-80 transition-all duration-500 group-hover:w-16"
+                          style={{ background: f.accent }}
+                        />
+                      </div>
                     )}
                   </div>
                 </motion.article>
