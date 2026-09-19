@@ -60,11 +60,13 @@ export function LandingHero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.16, duration: 0.55 }}
-            className="font-display mt-6 max-w-[18ch] text-[2.75rem] font-bold leading-[1.05] tracking-[-0.03em] text-[#0F172A] sm:text-6xl lg:text-[4.5rem]"
+            className="font-display mt-6 text-[2.2rem] font-bold leading-[1.12] tracking-[-0.03em] text-[#0F172A] sm:text-5xl lg:text-[3.35rem]"
           >
-            Healthcare doesn&apos;t end at discharge.
-            <br />
-            <span className="hn-gradient-text">It continues with AI.</span>
+            <span className="block">Healthcare That Reaches</span>
+            <span className="block">Beyond Boundaries.</span>
+            <span className="hn-gradient-text mt-2 block">
+              Every Home, Every Village.
+            </span>
           </motion.h1>
 
           <motion.p
